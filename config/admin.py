@@ -1,3 +1,16 @@
 from django.contrib import admin
+from typeidea.custom_site import custom_site
+from .models import Link,SideBar
+from typeidea.base_admin import BaseOwnerAdmin
+
+@admin.register(Link,site=custom_site)
+class LinkAdmin(BaseOwnerAdmin):
+    list_display = ('title','href','status','weight','created_time')
+    fiedls = ('title','href','status','weight')
+
+@admin.register(SideBar,site=custom_site)
+class SideBarAdmin(BaseOwnerAdmin):
+    list_display = ('title', 'display_type', 'content', 'created_time')
+    fiedls = ('title', 'display_type', 'content')
 
 # Register your models here.
